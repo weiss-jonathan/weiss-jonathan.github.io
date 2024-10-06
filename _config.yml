@@ -44,6 +44,9 @@ social:
     url: https://www.linkedin.com/in/jonathan-weiss/
   - title: spotify
     url: https://open.spotify.com/artist/1bSYDuBbxYOaH67TOzqy5X
+  - title: google-scholar
+    url: https://scholar.google.com/citations?user=OaLCWBQAAAAJ
+    
   #- title: twitter
   #  url: http://twitter.com/jekyllrb
   #- title: facebook
