@@ -330,8 +330,8 @@ section.about {
 .btn-outline-black:active,
 .btn-outline-black.active {
     border: solid 2px #000000;
-    color: #000000;
-    background: #000000;
+    color: #F0F0F0;
+    background: #fff;
 }
 
 .floating-label-form-group {
