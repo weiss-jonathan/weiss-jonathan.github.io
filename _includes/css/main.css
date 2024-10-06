@@ -187,6 +187,12 @@ section.success {
     background: #{{ site.color.primary }};
 }
 
+section.about {
+    color: #fff;
+    background: #2c3e50;
+    
+}
+
 @media(max-width:767px) {
     section {
         padding: 75px 0;
