@@ -330,7 +330,7 @@ section.about {
 .btn-outline-black:active,
 .btn-outline-black.active {
     border: solid 2px #fff;
-    color: #{{ site.color.primary }};
+    color: #fff;
     background: #fff;
 }
 
