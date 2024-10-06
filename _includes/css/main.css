@@ -329,7 +329,7 @@ section.about {
 .btn-outline-black:focus,
 .btn-outline-black:active,
 .btn-outline-black.active {
-    border: solid 2px #fff;
+    border: solid 2px #000000;
     color: #fff;
     background: #fff;
 }
