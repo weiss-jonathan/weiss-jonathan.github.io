@@ -7,6 +7,10 @@
   font-family: var(--fa-style-family, "Font Awesome 6 Free");
   font-weight: var(--fa-style, 900); }
 
+.normal-text {
+    text-transform: none; /* This will override the uppercase rule */
+}
+
 .fa,
 .fas,
 .fa-solid,
