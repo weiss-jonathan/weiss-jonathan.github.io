@@ -329,9 +329,9 @@ section.about {
 .btn-outline-black:focus,
 .btn-outline-black:active,
 .btn-outline-black.active {
-    border: solid 2px #F0F0F0;
-    color: #F0F0F0;
-    background: #F0F0F0;
+    border: solid 2px #000000;
+    color: #fff;
+    background: #fff;
 }
 
 .floating-label-form-group {
