@@ -312,7 +312,7 @@ section.about {
 .btn-outline:active,
 .btn-outline.active {
     border: solid 2px #000000;
-    color: #fff; /* #{{ site.color.primary }}; */
+    color: #D0D0D0; /* #{{ site.color.primary }}; */
     background: #fff;
 }
 
