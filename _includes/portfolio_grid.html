@@ -18,7 +18,7 @@
             </div>
           </div>
           <!-- Use the image-size property to assign a size dynamically -->
-          <img src="img/portfolio/{{ post.img }}" class="img-responsive" {% if post.size %} style = "height: {{post.size}}" {% endif %} alt="{{ post.alt }}">
+          <img src="img/portfolio/{{ post.img }}" class="img-responsive" {% if post.size %} style = "width: {{post.size}}" {% endif %} alt="{{ post.alt }}">
         </a>
       </div>
       {% endfor %}
