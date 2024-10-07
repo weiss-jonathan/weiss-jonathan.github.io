@@ -283,7 +283,7 @@ section.about {
       display: flex;
       flex-flow: row wrap;
       align-items: stretch;
-      justify-content: center; /*space-between */
+      justify-content: space-between; /*space-between */
       align-items: center;     /* Vertically centers content */
     }
     .portfolio-flex-grid .portfolio-flex-row .portfolio-flex-item {
