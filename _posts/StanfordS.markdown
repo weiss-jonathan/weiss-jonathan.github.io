@@ -1,11 +1,11 @@
 ---
 layout: default
-modal-id: 3
+modal-id: 1
 date: 2024-10-06
-img: auxetic.png
+img: S.png
 alt: image-alt
 project-date: October 2024
 client: Start Bootstrap
-category: 3D printing
-description: Multimaterial multinozzle 3D printing
+category: 3D Printing
+description: Gradient multimaterial 3D printing
 ---
