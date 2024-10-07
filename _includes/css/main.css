@@ -17,13 +17,17 @@ p.small {
     font-size: 16px;
 }
 
-a,
+a {
+    color: #00aaff;
+}
+
+
 a:hover,
 a:focus,
 a:active,
 a.active {
     outline: 0;
-    color: #00c3ff;
+    color: #ffffff;
 }
 
 h1,
