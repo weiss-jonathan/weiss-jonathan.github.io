@@ -311,7 +311,7 @@ section.about {
 .btn-outline:focus,
 .btn-outline:active,
 .btn-outline.active {
-    border: solid 2px #fff;
+    border: solid 2px #000000;
     color: #fff; /* #{{ site.color.primary }}; */
     background: #fff;
 }
