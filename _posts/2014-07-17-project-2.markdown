@@ -2,7 +2,7 @@
 layout: default
 modal-id: 2
 date: 2024-10-06
-img: s.png
+img: S.png
 alt: image-alt
 project-date: October 2024
 client: Start Bootstrap
