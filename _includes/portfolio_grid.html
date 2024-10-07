@@ -17,7 +17,8 @@
               <i class="fa fa-search-plus fa-3x"></i>
             </div>
           </div>
-          <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
+          <!-- Use the image-size property to assign a size dynamically -->
+          <img src="img/portfolio/{{ post.img }}" class="img-responsive" {% if post.size %} style = "height: {{post.size}}" {% endif %} alt="{{ post.alt }}">
         </a>
       </div>
       {% endfor %}
