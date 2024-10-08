@@ -80,7 +80,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <video id="modalVideo" class="video-border" controls style="width: 100%; height: auto;">
+        <video id="modalVideo" class="video-border" controls preload="metadata" style="width: 100%; height: auto;">
           <source id="videoSource" src="" type="video/mp4">
         </video>
       </div>
@@ -90,8 +90,22 @@
 
 <script>
   function openModal(videoFile) {
-    document.getElementById('videoSource').src = 'img/videos/' + videoFile;
-    document.getElementById('modalVideo').load();
+    var videoSrc = 'img/videos/' + videoFile;
+    var modalVideo = document.getElementById('modalVideo');
+    var videoSource = document.getElementById('videoSource');
+
+    // Pause the video when modal is closed
+    modalVideo.pause();
+    videoSource.src = videoSrc;
+    modalVideo.load();
+    
     $('#videoModal').modal('show');
   }
+
+  // Pause the video when the modal is hidden
+  $('#videoModal').on('hidden.bs.modal', function () {
+    var modalVideo = document.getElementById('modalVideo');
+    modalVideo.pause(); // Pause video on modal close
+    modalVideo.src = ''; // Clear source to avoid glitches
+  });
 </script>
