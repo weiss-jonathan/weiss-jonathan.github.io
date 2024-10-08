@@ -22,90 +22,82 @@
         </a>
       </div>
       {% endfor %}
-
-      <!-- New Video Section -->
-      <div class="row text-center" style="margin-top: 30px;">
-        <div class="row"> 
-          <div class="col-lg-12 text-center">
-            <h2 style="color: #ffffff; margin-bottom: 20px;">Videos</h2> <!-- Center the title -->
-          </div>
-        </div>     
+    </div>
+    <!-- New Video Section -->
+    <div class="row text-center" style="margin-top: 30px;">
+      <div class="col-lg-12 text-center">
+        <h2 style="color: #ffffff; margin-bottom: 20px;">Videos</h2> <!-- Center the title -->
+        <hr class="star-blue">
       </div>
-      <div class="portfolio-flex-row">
-        <div class="portfolio-flex-item portfolio-item">
-          <a href="#videoModal" class="portfolio-link" data-toggle="modal" onclick="openModal('Auxetic.mp4')">
-            <div class="caption">
-              <div class="caption-content">
-                <i class="fa fa-play fa-3x"></i>
-              </div>
+    </div>
+    <div class="portfolio-flex-row">
+      <div class="portfolio-flex-item portfolio-item">
+        <a href="img/videos/Auxetic.mp4" class="portfolio-link">
+          <div class="caption">
+            <div class="caption-content">
+              <i class="fa fa-play fa-3x"></i>
             </div>
-            <img src="img/videos/Auxetic-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 1">
-          </a>
-        </div>
+          </div>
+          <img src="img/videos/Auxetic-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 1">
+        </a>
+        <video controls style="width: 100%; height: auto; display: none;" class="video-player">
+          <source src="img/videos/Auxetic.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-        <div class="portfolio-flex-item portfolio-item">
-          <a href="#videoModal" class="portfolio-link" data-toggle="modal" onclick="openModal('Valve.mp4')">
-            <div class="caption">
-              <div class="caption-content">
-                <i class="fa fa-play fa-3x"></i>
-              </div>
+      <div class="portfolio-flex-item portfolio-item">
+        <a href="img/videos/Valve.mp4" class="portfolio-link">
+          <div class="caption">
+            <div class="caption-content">
+              <i class="fa fa-play fa-3x"></i>
             </div>
-            <img src="img/videos/Valve-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 2">
-          </a>
-        </div>
+          </div>
+          <img src="img/videos/Valve-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 2">
+        </a>
+        <video controls style="width: 100%; height: auto; display: none;" class="video-player">
+          <source src="img/videos/Valve.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-        <div class="portfolio-flex-item portfolio-item">
-          <a href="#videoModal" class="portfolio-link" data-toggle="modal" onclick="openModal('Tree.mp4')">
-            <div class="caption">
-              <div class="caption-content">
-                <i class="fa fa-play fa-3x"></i>
-              </div>
+      <div class="portfolio-flex-item portfolio-item">
+        <a href="img/videos/Tree.mp4" class="portfolio-link">
+          <div class="caption">
+            <div class="caption-content">
+              <i class="fa fa-play fa-3x"></i>
             </div>
-            <img src="img/videos/Tree-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
-          </a>
-        </div>
+          </div>
+          <img src="img/videos/Tree-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
+        </a>
+        <video controls style="width: 100%; height: auto; display: none;" class="video-player">
+          <source src="img/videos/Tree.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Video Modal -->
-<div id="videoModal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Video Player</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <video id="modalVideo" class="video-border" controls preload="metadata" style="width: 100%; height: auto;">
-          <source id="videoSource" src="" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-  function openModal(videoFile) {
-    var videoSrc = 'img/videos/' + videoFile;
-    var modalVideo = document.getElementById('modalVideo');
-    var videoSource = document.getElementById('videoSource');
+  // Show the video player when clicking the thumbnail
+  document.querySelectorAll('.portfolio-item a').forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default anchor behavior
+      const videoPlayer = this.nextElementSibling; // Get the corresponding video player
+      const allPlayers = document.querySelectorAll('.video-player');
 
-    // Pause the video when modal is closed
-    modalVideo.pause();
-    videoSource.src = videoSrc;
-    modalVideo.load();
-    
-    $('#videoModal').modal('show');
-  }
+      // Hide all video players
+      allPlayers.forEach(player => {
+        player.style.display = 'none';
+        player.pause(); // Pause the video if it's playing
+      });
 
-  // Pause the video when the modal is hidden
-  $('#videoModal').on('hidden.bs.modal', function () {
-    var modalVideo = document.getElementById('modalVideo');
-    modalVideo.pause(); // Pause video on modal close
-    modalVideo.src = ''; // Clear source to avoid glitches
+      // Show the clicked video player
+      if (videoPlayer) {
+        videoPlayer.style.display = 'block';
+        videoPlayer.play(); // Play the video
+      }
+    });
   });
 </script>
