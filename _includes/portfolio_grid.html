@@ -23,16 +23,16 @@
       </div>
       {% endfor %}
     </div>
+
     <!-- New Video Section -->
     <div class="row text-center" style="margin-top: 30px;">
       <div class="col-lg-12 text-center">
         <h2 style="color: #ffffff; margin-bottom: 20px;">Videos</h2> <!-- Center the title -->
-        <hr class="star-blue">
       </div>
     </div>
     <div class="portfolio-flex-row">
       <div class="portfolio-flex-item portfolio-item">
-        <a href="img/videos/Auxetic.mp4" class="portfolio-link">
+        <a href="#" class="portfolio-link">
           <div class="caption">
             <div class="caption-content">
               <i class="fa fa-play fa-3x"></i>
@@ -47,7 +47,7 @@
       </div>
 
       <div class="portfolio-flex-item portfolio-item">
-        <a href="img/videos/Valve.mp4" class="portfolio-link">
+        <a href="#" class="portfolio-link">
           <div class="caption">
             <div class="caption-content">
               <i class="fa fa-play fa-3x"></i>
@@ -62,7 +62,7 @@
       </div>
 
       <div class="portfolio-flex-item portfolio-item">
-        <a href="img/videos/Tree.mp4" class="portfolio-link">
+        <a href="#" class="portfolio-link">
           <div class="caption">
             <div class="caption-content">
               <i class="fa fa-play fa-3x"></i>
@@ -85,17 +85,21 @@
     link.addEventListener('click', function(event) {
       event.preventDefault(); // Prevent the default anchor behavior
       const videoPlayer = this.nextElementSibling; // Get the corresponding video player
-      const allPlayers = document.querySelectorAll('.video-player');
+      const thumbnail = this.querySelector('img'); // Get the thumbnail image
 
-      // Hide all video players
-      allPlayers.forEach(player => {
+      // Hide all video players and thumbnails
+      document.querySelectorAll('.video-player').forEach(player => {
         player.style.display = 'none';
         player.pause(); // Pause the video if it's playing
       });
+      document.querySelectorAll('.portfolio-item img').forEach(img => {
+        img.style.display = 'block'; // Show all thumbnails
+      });
 
-      // Show the clicked video player
+      // Hide the thumbnail and show the clicked video player
       if (videoPlayer) {
-        videoPlayer.style.display = 'block';
+        thumbnail.style.display = 'none'; // Hide the thumbnail
+        videoPlayer.style.display = 'block'; // Show the video player
         videoPlayer.play(); // Play the video
       }
     });
