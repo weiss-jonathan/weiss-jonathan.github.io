@@ -23,19 +23,55 @@
       </div>
       {% endfor %}
 
-    <!-- New Video Section -->
-    <div class="portfolio-flex-item portfolio-item text-center">
-      <h3 style="color: #ffffff;">Video Portfolio</h3>
-      <video controls style="width: 100%; height: auto;">
-        <source src="img/videos/Auxetic.mp4" type="video/mp4">
-      </video>
-      <video controls style="width: 100%; height: auto;">
-        <source src="img/videos/Valve.mp4" type="video/mp4">
-      </video>
-      <video controls style="width: 100%; height: auto;">
-        <source src="img/videos/Tree.mp4" type="video/mp4">
-      </video>
+      <!-- New Video Section -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="portfolio-flex-item portfolio-item text-center">
+            <h3 style="color: #ffffff;">Video Portfolio</h3>
+            <img src="img/videos/Auxetic-thumbnail.png" class="img-responsive" style="cursor: pointer;" onclick="openModal('Auxetic.mp4')" alt="Video 1">
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="portfolio-flex-item portfolio-item text-center">
+            <img src="img/videos/Valve-thumbnail.png" class="img-responsive" style="cursor: pointer;" onclick="openModal('Valve.mp4')" alt="Video 2">
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="portfolio-flex-item portfolio-item text-center">
+            <img src="img/videos/Tree-thumbnail.png" class="img-responsive" style="cursor: pointer;" onclick="openModal('Tree.mp4')" alt="Video 3">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Video Modal -->
+<div id="videoModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Video Player</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <video id="modalVideo" controls style="width: 100%; height: auto;">
+          <source id="videoSource" src="" type="video/mp4">
+
+        </video>
+      </div>
     </div>
   </div>
 </div>
-</section>
+
+<script>
+  function openModal(videoFile) {
+    document.getElementById('videoSource').src = 'img/videos/' + videoFile;
+    document.getElementById('modalVideo').load();
+    $('#videoModal').modal('show');
+  }
+</script>
