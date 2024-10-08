@@ -40,7 +40,7 @@
           </div>
           <img src="img/videos/Auxetic-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 1">
         </a>
-        <video controls style="width: 100%; height: auto; display: none;" class="video-player">
+        <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
           <source src="img/videos/Auxetic.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -55,7 +55,7 @@
           </div>
           <img src="img/videos/Valve-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 2">
         </a>
-        <video controls style="width: 100%; height: auto; display: none;" class="video-player">
+        <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
           <source src="img/videos/Valve.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -70,7 +70,7 @@
           </div>
           <img src="img/videos/Tree-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
         </a>
-        <video controls style="width: 100%; height: auto; display: none;" class="video-player">
+        <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
           <source src="img/videos/Tree.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -100,6 +100,8 @@
       if (videoPlayer) {
         thumbnail.style.display = 'none'; // Hide the thumbnail
         videoPlayer.style.display = 'block'; // Show the video player
+        videoPlayer.style.width = '100%'; // Make video full width
+        videoPlayer.style.maxWidth = 'none'; // Remove max width limit
         videoPlayer.play(); // Play the video
       }
     });
