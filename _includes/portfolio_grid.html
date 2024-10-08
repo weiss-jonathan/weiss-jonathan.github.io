@@ -27,7 +27,7 @@
     <!-- New Video Section -->
     <div class="row text-center" style="margin-top: 30px;">
       <div class="col-lg-12 text-center">
-        <h2 style="color: #ffffff; margin-bottom: 20px;">Videos</h2> <!-- Center the title -->
+        <h2 style="color: #ffffff; margin-bottom: 40px;">Videos</h2> <!-- Center the title -->
       </div>
     </div>
     <div class="portfolio-flex-row">
@@ -80,17 +80,17 @@
 </section>
 
 <script>
-  // Show the video player when clicking the thumbnail
+  // Show the video player and request fullscreen when clicking the thumbnail
   document.querySelectorAll('.portfolio-item a').forEach(link => {
     link.addEventListener('click', function(event) {
-      event.preventDefault(); // Prevent the default anchor behavior
+      event.preventDefault(); // Prevent default anchor behavior
       const videoPlayer = this.nextElementSibling; // Get the corresponding video player
       const thumbnail = this.querySelector('img'); // Get the thumbnail image
 
       // Hide all video players and thumbnails
       document.querySelectorAll('.video-player').forEach(player => {
         player.style.display = 'none';
-        player.pause(); // Pause the video if it's playing
+        player.pause(); // Pause all videos
       });
       document.querySelectorAll('.portfolio-item img').forEach(img => {
         img.style.display = 'block'; // Show all thumbnails
@@ -100,9 +100,18 @@
       if (videoPlayer) {
         thumbnail.style.display = 'none'; // Hide the thumbnail
         videoPlayer.style.display = 'block'; // Show the video player
-        videoPlayer.style.width = '100%'; // Make video full width
-        videoPlayer.style.maxWidth = 'none'; // Remove max width limit
         videoPlayer.play(); // Play the video
+
+        // Request fullscreen when video starts playing
+        if (videoPlayer.requestFullscreen) {
+          videoPlayer.requestFullscreen();
+        } else if (videoPlayer.mozRequestFullScreen) { // Firefox
+          videoPlayer.mozRequestFullScreen();
+        } else if (videoPlayer.webkitRequestFullscreen) { // Chrome, Safari and Opera
+          videoPlayer.webkitRequestFullscreen();
+        } else if (videoPlayer.msRequestFullscreen) { // IE/Edge
+          videoPlayer.msRequestFullscreen();
+        }
       }
     });
   });
