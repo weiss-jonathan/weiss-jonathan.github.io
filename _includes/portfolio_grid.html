@@ -1,3 +1,28 @@
+<head>
+  <style>
+    .portfolio-item {
+      position: relative;
+    }
+
+    .image-description {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      opacity: 0; /* Initially hidden */
+      transition: opacity 0.3s ease; /* Smooth transition */
+    }
+
+    .portfolio-item:hover .image-description {
+      opacity: 1; /* Show on hover */
+    }
+  </style>
+</head>
+
+
 <!-- Portfolio Grid Section -->
 <section id="portfolio" style="background-color: #000">
   <div class="container portfolio-flex-grid">
@@ -16,6 +41,7 @@
             <div class="caption-content">
               <i class="fa fa-search-plus fa-3x"></i>
             </div>
+            <div class="image-description">{{ post.description }}</div>
           </div>
           <!-- Use the image-size property to assign a size dynamically -->
           <img src="img/portfolio/{{ post.img }}" class="img-responsive" {% if post.size %} style="width: {{ post.size }}; display: block; margin: 0 auto;" {% endif %} alt="{{ post.alt }}">
@@ -30,6 +56,7 @@
         <h2 style="color: #ffffff; margin-bottom: 40px;">Videos</h2> <!-- Center the title -->
       </div>
     </div>
+
     <div class="portfolio-flex-row">
       <div class="portfolio-flex-item portfolio-item">
         <a href="#" class="portfolio-link">
