@@ -8,5 +8,5 @@ project-date: October 2024
 client: Start Bootstrap
 size: 70%
 category: 3D Printing
-description: Low-cost, open-source, 3D printer
+description: A low-cost, open-source 3D printer for multimaterial and high-throughput direct ink writing of soft and living materials. See publication.
 ---
