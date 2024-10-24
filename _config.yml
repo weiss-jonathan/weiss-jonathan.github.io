@@ -1,7 +1,6 @@
 # Site settings
 title: Jonathan Weiss
 email: jdweiss@stanford.edu
-baseurl: "/weiss-jonathan.github.io" # if you're not using a custom domain
 url: weiss-jonathan.github.io
 description: I'm a 5th-year Bioengineering Ph.D. candidate at Stanford designing low-cost, high-throughput 3D-printing technologies. #"Write an awesome description for your new site here. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
 keywords: "jonathan, weiss, website, phd, bioengineering, stanford, 3d printing, tissue engineering"
