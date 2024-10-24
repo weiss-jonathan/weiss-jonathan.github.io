@@ -1,6 +1,6 @@
 ---
 layout: default
-modal-id: 6
+modal-id: 3
 date: 2014-07-15
 img: trees.png
 alt: image-alt
