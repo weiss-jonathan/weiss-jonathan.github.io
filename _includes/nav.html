@@ -71,15 +71,15 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
-    // Attach click event to the dropdown toggle for page scrolling
-    $(".dropdown-toggle").click(function(event) {
-      // Prevent default action so the page scrolls without closing the dropdown
+    // Attach click event to the scroll links
+    $(".scroll-link").click(function(event) {
+      // Prevent default action only for internal section scrolling
       event.preventDefault();
 
-      // Get the target anchor from the href of the dropdown toggle
+      // Get the target section from the href attribute
       var target = $(this).attr("href");
 
-      // Perform page scroll to the target section
+      // Perform smooth scroll to the target section
       $('html, body').animate({
         scrollTop: $(target).offset().top
       }, 1000);
