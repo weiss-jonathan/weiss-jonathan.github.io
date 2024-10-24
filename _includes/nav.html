@@ -1,3 +1,24 @@
+<style>
+  /* Ensure the dropdown is hidden by default */
+  .dropdown-menu {
+    display: none; /* Hide the dropdown by default */
+  }
+
+  /* Show the dropdown when hovering over the parent */
+  .dropdown:hover .dropdown-menu {
+    display: block; /* Show the dropdown on hover */
+  }
+
+  /* Optional: Position the dropdown correctly */
+  .dropdown-menu {
+    position: absolute; /* Positioning context for the dropdown */
+    z-index: 1000; /* Ensure it appears above other content */
+    background-color: white; /* Background color */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for aesthetics */
+  }
+</style>
+
+
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -33,11 +54,11 @@
     
         <!-- Dropdown for external portfolio pages -->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portfolio Pages <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Portfolio<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/portfolio/project1.html">Project 1</a></li>
-            <li><a href="/portfolio/project2.html">Project 2</a></li>
-            <li><a href="/portfolio/project3.html">Project 3</a></li>
+            <li><a class="scroll-link" href="#portfolio-project1">Project 1</a></li>
+            <li><a class="scroll-link" href="#portfolio-project2">Project 2</a></li>
+            <li><a class="scroll-link" href="#portfolio-project3">Project 3</a></li>
           </ul>
         </li>
 
