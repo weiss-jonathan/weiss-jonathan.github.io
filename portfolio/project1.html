@@ -3,65 +3,25 @@ layout: default  # Use your Jekyll layout
 title: "Project 1 - My Portfolio"
 ---
 
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../styles.css"> <!-- Your main stylesheet -->
-    <style>
-        body {
-            padding-top: 70px; /* Prevents overlap with fixed navbar */
-        }
-        .project-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .project-content {
-            margin: 20px auto;
-            max-width: 800px;
-        }
-    </style>
-</head>
-<body>
+<html>
+{% include head.html %}
 
-    <!-- Navigation -->
-    {% include header.html %}  <!-- Include your header file if you're using Jekyll -->
-    {% include nav.html %}
-    <!-- Project Section -->
-    <div class="project-header">
-        <h1>Project 1 Title</h1>
-        <p>Short description of Project 1.</p>
-    </div>
+<body id="page-top" class="index">
+  {% include nav.html %}
+  {% include header.html %}
 
-    <div class="container project-content">
-        <h2>Overview</h2>
-        <p>Provide a detailed overview of your project here. Discuss its goals, methods, and significance.</p>
 
-        <h2>Technologies Used</h2>
-        <ul>
-            <li>Technology 1</li>
-            <li>Technology 2</li>
-            <li>Technology 3</li>
-            <!-- Add more as necessary -->
-        </ul>
+  {% include portfolio_grid.html %}
 
-        <h2>Results</h2>
-        <p>Summarize the results and outcomes of your project. Include any relevant data, charts, or images.</p>
-        <img src="../assets/images/project1.jpg" alt="Project Result" class="img-responsive center-block"> <!-- Replace with your image -->
+  
 
-        <h2>Conclusion</h2>
-        <p>Wrap up your project details and provide your final thoughts.</p>
-
-        <h2>Links</h2>
-        <p>
-            <a href="https://github.com/yourusername/project1" target="_blank">GitHub Repository</a><br>
-            <a href="https://www.example.com" target="_blank">Live Demo</a>
-        </p>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  {% include footer.html %}
+  {% include modals.html %}
+  {% include js.html %}
 </body>
+
 </html>
+
+
