@@ -3,49 +3,22 @@ title: "Project 1 - My Portfolio"
 permalink: /portfolio/project1.html
 ---
 
+<!DOCTYPE html>
+<html>
 {% include head.html %}
 
 <body id="page-top" class="index">
   {% include nav.html %}
   {% include header.html %}
+  {% include about.html %}
+  {% include publications.html %}
+  {% include portfolio_grid.html %}
+  {% include other.html %}
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1>Project 1 Title</h1>
-        <p>Short description of Project 1.</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-12">
-        <h2>Overview</h2>
-        <p>This is where you describe the overview of your project.</p>
-
-        <h2>Technologies Used</h2>
-        <ul>
-          <li>Technology 1</li>
-          <li>Technology 2</li>
-          <li>Technology 3</li>
-        </ul>
-
-        <h2>Results</h2>
-        <p>Summarize the results of your project here.</p>
-        <img src="/assets/images/project1.jpg" alt="Project Image" class="img-responsive center-block">
-
-        <h2>Conclusion</h2>
-        <p>Provide your final thoughts here.</p>
-
-        <h2>Links</h2>
-        <p>
-          <a href="https://github.com/yourusername/project1" target="_blank">GitHub Repository</a><br>
-          <a href="https://www.example.com" target="_blank">Live Demo</a>
-        </p>
-      </div>
-    </div>
-  </div>
-
+  
   {% include footer.html %}
   {% include modals.html %}
   {% include js.html %}
 </body>
+
+</html>
