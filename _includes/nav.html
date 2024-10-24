@@ -78,28 +78,3 @@
   <!-- /.container-fluid -->
 </nav>
 
-<!-- jQuery script -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function() {
-    // Attach click event to all scroll links
-    $(".scroll-link").click(function(event) {
-      // Prevent default action only for internal section scrolling
-      event.preventDefault();
-
-      // Get the target section from the href attribute
-      var target = $(this).attr("href");
-
-      // Check if the target is an internal section
-      if (target.startsWith('#')) {
-        // Perform smooth scroll to the target section
-        $('html, body').animate({
-          scrollTop: $(target).offset().top
-        }, 1000);
-      } else {
-        // For external links, simply follow the link
-        window.location.href = target;
-      }
-    });
-  });
-</script>
