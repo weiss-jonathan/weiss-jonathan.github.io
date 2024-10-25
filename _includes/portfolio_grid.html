@@ -39,7 +39,8 @@
         /* Added grid styles */
         .portfolio-flex-row {
             display: grid;
-            align-items: center; /* Center items vertically */
+            align-items: center;
+            /* Center items vertically */
             /* Use CSS grid for layout */
             grid-template-columns: repeat(3, 1fr);
             /* Fixed 3 columns */
@@ -62,10 +63,10 @@
             {% assign sorted_posts = site.posts | sort: 'modal-id' %}
             {% for post in sorted_posts %}
             <div class="portfolio-flex-item portfolio-item">
-                <a href="#portfolioModal-{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
-                    <img src="img/portfolio/{{ post.img }}" class="img-responsive"
-                        style="display: block; margin: 0 auto;" alt="{{ post.alt }}">
-                </a>
+
+                <img src="img/portfolio/{{ post.img }}" class="img-responsive" style="display: block; margin: 0 auto;"
+                    alt="{{ post.alt }}">
+
                 <div class="image-description">{{ post.description }}</div> <!-- Permanent caption below the image -->
             </div>
             {% endfor %}
