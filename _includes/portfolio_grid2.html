@@ -1,0 +1,196 @@
+<head>
+  <style>
+    .portfolio-item {
+      position: relative;
+    }
+
+    .image-description {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      color: #fff;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      opacity: 0; /* Initially hidden */
+      transition: opacity 0.3s ease; /* Smooth transition */
+    }
+
+    .portfolio-item:hover .image-description {
+      opacity: 1; /* Show on hover */
+    }
+  </style>
+</head>
+
+
+<!-- Portfolio Grid Section -->
+<section id="portfolio" style="background-color: #000">
+  <div class="container portfolio-flex-grid">
+    <div class="row">
+      <div class="col-lg-12 text-center" style= "color: #ffffff; position: relative; z-index: 10;">
+        <h2 style="position: relative; z-index: 10;">Portfolio</h2> <!-- Bring title to front -->
+        <hr class="star-blue">
+      </div>
+    </div>
+    <div class="portfolio-flex-row">
+      {% assign sorted_posts = site.posts | sort: 'modal-id' %}
+      {% for post in sorted_posts %}
+      <div class="portfolio-flex-item portfolio-item">
+        <a href="#portfolioModal-{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
+          <div class="caption">
+            <div class="caption-content">
+              <i class="fa fa-search-plus fa-3x"></i>
+            </div>
+            <div class="image-description">{{ post.description }}</div>
+          </div>
+          <!-- Use the image-size property to assign a size dynamically -->
+          <img src="img/portfolio/{{ post.img }}" class="img-responsive" {% if post.size %} style="width: {{ post.size }}; display: block; margin: 0 auto;" {% endif %} alt="{{ post.alt }}">
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- New Video Section -->
+
+    <div class="row text-center" style="margin-top: 30px;">
+      <div class="col-lg-12 text-center">
+        <h2 style="color: #ffffff; margin-bottom: 40px;">Videos</h2> <!-- Center the title -->
+        <h5 style="color: #ffffff; margin-bottom: 40px;">Click to play</h5>
+      </div>
+    </div>
+
+    <div class="portfolio-flex-row">
+      <div class="portfolio-flex-item portfolio-item">
+        <a href="#" class="portfolio-link">
+          <div class="caption">
+            <div class="caption-content">
+              <i class="fa fa-play fa-3x"></i>
+            </div>
+            <div class="image-description">Uniaxial tensile testing of auxetic structure. Red is stiff silicone, blue is soft silicone.</div>
+          </div>
+          <img src="img/videos/Auxetic-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 1">
+        </a>
+        <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
+          <source src="img/videos/Auxetic.mp4" type="video/mp4">
+
+        </video>
+      </div>
+
+      <div class="portfolio-flex-item portfolio-item">
+        <a href="#" class="portfolio-link">
+          <div class="caption">
+            <div class="caption-content">
+              <i class="fa fa-play fa-3x"></i>
+            </div>
+            <div class="image-description">3D printed trileaflet valve made from PEGDA subjected to pulmonary pressures and flows in an in vitro heart simulator.</div>
+          </div>
+          <img src="img/videos/Valve-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 2">
+        </a>
+        <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
+          <source src="img/videos/Valve.mp4" type="video/mp4">
+
+        </video>
+      </div>
+
+      <div class="portfolio-flex-item portfolio-item">
+        <a href="#" class="portfolio-link">
+          <div class="caption">
+            <div class="caption-content">
+              <i class="fa fa-play fa-3x"></i>
+            </div>
+            <div class="image-description">Demonstration of high-throughput multinozzle embedded 3D printing using an 8x4 array printhead.</div>
+          </div>
+          <img src="img/videos/Tree-thumbnail.png" class="img-responsive" style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
+        </a>
+        <video controls style="width: 100%; max-width: 800px; height: auto; display: none;" class="video-player">
+          <source src="img/videos/Tree.mp4" type="video/mp4">
+
+        </video>
+      </div>
+
+      <div class="portfolio-flex-item portfolio-item">
+        <a href="#" class="portfolio-link">
+          <div class="caption">
+            <div class="caption-content">
+              <i class="fa fa-play fa-3x"></i>
+            </div>
+            <div class="image-description">3D printing of stem cell embryoid body bioink embedded into basement gel.</div>
+          </div>
+          <img src="img/videos/ambr-thumbnail.png" class="img-responsive" style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
+        </a>
+        <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
+          <source src="img/videos/ambr.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="portfolio-flex-item portfolio-item">
+        <a href="#" class="portfolio-link">
+          <div class="caption">
+            <div class="caption-content">
+              <i class="fa fa-play fa-3x"></i>
+            </div>
+            <div class="image-description">Multinozzle printing of enginered heart tissues (yellow) inside silicone support frames (blue).</div>
+          </div>
+          <img src="img/videos/BioMM3D-thumbnail.png" class="img-responsive" style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
+        </a>
+        <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
+          <source src="img/videos/BioMM3D.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="portfolio-flex-item portfolio-item">
+        <a href="#" class="portfolio-link">
+          <div class="caption">
+            <div class="caption-content">
+              <i class="fa fa-play fa-3x"></i>
+            </div>
+            <div class="image-description">Beating engineered heart tissue printed from single cardiomyocytes (central filament) and silicone (outer frame).</div>
+          </div>
+          <img src="img/videos/EHT.png" class="img-responsive" style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
+        </a>
+        <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
+          <source src="img/videos/EHT.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Show the video player and request fullscreen when clicking the thumbnail
+  document.querySelectorAll('.portfolio-item a').forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default anchor behavior
+      const videoPlayer = this.nextElementSibling; // Get the corresponding video player
+      const thumbnail = this.querySelector('img'); // Get the thumbnail image
+
+      // Hide all video players and thumbnails
+      document.querySelectorAll('.video-player').forEach(player => {
+        player.style.display = 'none';
+        player.pause(); // Pause all videos
+      });
+      document.querySelectorAll('.portfolio-item img').forEach(img => {
+        img.style.display = 'block'; // Show all thumbnails
+      });
+
+      // Hide the thumbnail and show the clicked video player
+      if (videoPlayer) {
+        thumbnail.style.display = 'none'; // Hide the thumbnail
+        videoPlayer.style.display = 'block'; // Show the video player
+        videoPlayer.play(); // Play the video
+
+        // Request fullscreen when video starts playing
+        if (videoPlayer.requestFullscreen) {
+          videoPlayer.requestFullscreen();
+        } else if (videoPlayer.mozRequestFullScreen) { // Firefox
+          videoPlayer.mozRequestFullScreen();
+        } else if (videoPlayer.webkitRequestFullscreen) { // Chrome, Safari and Opera
+          videoPlayer.webkitRequestFullscreen();
+        } else if (videoPlayer.msRequestFullscreen) { // IE/Edge
+          videoPlayer.msRequestFullscreen();
+        }
+      }
+    });
+  });
+</script>
