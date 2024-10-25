@@ -1,17 +1,48 @@
 <head>
     <style>
-        .portfolio-item {
-            position: relative;
+        .portfolio-flex-item {
             display: flex;
-            /* Make this a flex container */
             flex-direction: column;
-            /* Align items in a column */
+            align-self: center;
+            justify-content: flex-start;
+            /* Keep items aligned at the start */
+            height: 450px;
+            /* Ensure each item has enough height */
+            padding: 5px;
+            margin: 0;
+        }
+
+        .video-item {
+
+            height: 250px;
+
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
             align-items: center;
-            /* Center items horizontally */
-            text-align: center;
-            margin-bottom: 20px;
-            justify-content: center
-            height: 400px; /* Set a fixed height for consistency */
+            /* Center the image vertically */
+            max-height: 300px;
+            /* Set maximum height for the container */
+            width: 100%;
+            overflow: hidden;
+            /* Hide overflow to prevent stretching */
+        }
+
+        .image-container img {
+            max-width: 100%;
+            /* Responsive width */
+            height: 300px;
+            /* Ensure the image doesn't exceed the container height */
+            object-fit: contain;
+            /* Maintain aspect ratio */
+        }
+
+        .text-container {
+            width: 100%;
+            align-self: flex-start;
+            /* Ensure text aligns at the top */
         }
 
         .image-description {
@@ -20,37 +51,25 @@
             color: #fff;
             width: 100%;
             padding: 10px;
-            margin-top: 10px;
             font-size: 1em;
-            text-align: justify;
+            text-align: left;
             flex-shrink: 0;
             /* Prevent the description from shrinking */
-        }
-
-        img {
-            width: 100%;
-            align-items: center;
-            /* Adjust to the container */
-            height: auto;
-            /* Maintain aspect ratio */
-            max-height: 300px;
-            /* Set a maximum height if needed */
-            object-fit: contain;
-            /* Ensures the image covers the area */
-            margin: 0 auto;
+            align-self: flex-start;
+            /* Align text at the top */
+            margin-top: 0;
+            /* Remove margin to ensure it stays at the top */
         }
 
         /* Added grid styles */
         .portfolio-flex-row {
             display: grid;
-            align-items: center;
-            /* Center items vertically */
-            /* Use CSS grid for layout */
             grid-template-columns: repeat(3, 1fr);
             /* Fixed 3 columns */
-            gap: 20px;
+            gap: 10px;
             /* Space between grid items */
-            padding: 10px; /* Add padding to the grid */
+            padding: 10px;
+            /* Add padding to the grid */
         }
     </style>
 </head>
@@ -64,18 +83,28 @@
                 <hr class="star-blue">
             </div>
         </div>
+
         <div class="portfolio-flex-row">
             {% assign sorted_posts = site.posts | sort: 'modal-id' %}
             {% for post in sorted_posts %}
-            <div class="portfolio-flex-item portfolio-item">
+            <div class="portfolio-flex-item">
+                {% if forloop.index == 1 %}
+                <a href="https://weiss-jonathan.github.io/Printess"> <!-- Make only the first image clickable -->
+                {% endif %}
+                    <div class="image-container">
+                        <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
+                    </div>
 
-                <img src="img/portfolio/{{ post.img }}" class="img-responsive"
-                    alt="{{ post.alt }}">
-
-                <div class="image-description">{{ post.description }}</div> <!-- Permanent caption below the image -->
+                {% if forloop.index == 1 %}
+                </a>
+                {% endif %}
+                <div class="text-container">
+                    <div class="image-description">{{ post.description }}</div>
+                </div>
             </div>
             {% endfor %}
         </div>
+
     </div>
 
 
@@ -88,117 +117,124 @@
         </div>
     </div>
 
-    <div class="portfolio-flex-row">
-        <div class="portfolio-flex-item portfolio-item">
-            <a href="#" class="portfolio-link">
-                <div class="caption">
-                    <div class="caption-content">
-                        <i class="fa fa-play fa-3x"></i>
+    <div class="container">
+        <div class="portfolio-flex-row">
+            <div class="portfolio-flex-item portfolio-item video-item">
+                <a href="#" class="portfolio-link">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-play fa-3x"></i>
+                        </div>
+                        <div class="image-description">Uniaxial tensile testing of auxetic structure. Red is stiff
+                            silicone,
+                            blue is soft silicone.</div>
                     </div>
-                    <div class="image-description">Uniaxial tensile testing of auxetic structure. Red is stiff silicone,
-                        blue is soft silicone.</div>
-                </div>
-                <img src="img/videos/Auxetic-thumbnail.png" class="img-responsive"
-                    style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 1">
-            </a>
-            <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
-                <source src="img/videos/Auxetic.mp4" type="video/mp4">
+                    <img src="img/videos/Auxetic-thumbnail.png" class="img-responsive"
+                        style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 1">
+                </a>
+                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
+                    <source src="img/videos/Auxetic.mp4" type="video/mp4">
 
-            </video>
+                </video>
+            </div>
+
+            <div class="portfolio-flex-item portfolio-item video-item">
+                <a href="#" class="portfolio-link">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-play fa-3x"></i>
+                        </div>
+                        <div class="image-description">3D printed trileaflet valve made from PEGDA subjected to
+                            pulmonary
+                            pressures and flows in an in vitro heart simulator.</div>
+                    </div>
+                    <img src="img/videos/Valve-thumbnail.png" class="img-responsive"
+                        style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 2">
+                </a>
+                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
+                    <source src="img/videos/Valve.mp4" type="video/mp4">
+
+                </video>
+            </div>
+
+            <div class="portfolio-flex-item portfolio-item video-item">
+                <a href="#" class="portfolio-link">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-play fa-3x"></i>
+                        </div>
+                        <div class="image-description">Demonstration of high-throughput multinozzle embedded 3D printing
+                            using
+                            an 8x4 array printhead.</div>
+                    </div>
+                    <img src="img/videos/Tree-thumbnail.png" class="img-responsive"
+                        style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
+                </a>
+                <video controls style="width: 100%; max-width: 800px; height: auto; display: none;"
+                    class="video-player">
+                    <source src="img/videos/Tree.mp4" type="video/mp4">
+
+                </video>
+            </div>
+
+            <div class="portfolio-flex-item portfolio-item video-item">
+                <a href="#" class="portfolio-link">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-play fa-3x"></i>
+                        </div>
+                        <div class="image-description">3D printing of stem cell embryoid body bioink embedded into
+                            basement
+                            gel.
+                        </div>
+                    </div>
+                    <img src="img/videos/ambr-thumbnail.png" class="img-responsive"
+                        style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
+                </a>
+                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
+                    <source src="img/videos/ambr.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="portfolio-flex-item portfolio-item video-item">
+                <a href="#" class="portfolio-link">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-play fa-3x"></i>
+                        </div>
+                        <div class="image-description">Multinozzle printing of enginered heart tissues (yellow) inside
+                            silicone
+                            support frames (blue).</div>
+                    </div>
+                    <img src="img/videos/BioMM3D-thumbnail.png" class="img-responsive"
+                        style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
+                </a>
+                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
+                    <source src="img/videos/BioMM3D.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="portfolio-flex-item portfolio-item video-item">
+                <a href="#" class="portfolio-link">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-play fa-3x"></i>
+                        </div>
+                        <div class="image-description">Beating engineered heart tissue printed from single
+                            cardiomyocytes
+                            (central filament) and silicone (outer frame).</div>
+                    </div>
+                    <img src="img/videos/EHT.png" class="img-responsive"
+                        style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
+                </a>
+                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
+                    <source src="img/videos/EHT.mp4" type="video/mp4">
+                </video>
+            </div>
+
         </div>
-
-        <div class="portfolio-flex-item portfolio-item">
-            <a href="#" class="portfolio-link">
-                <div class="caption">
-                    <div class="caption-content">
-                        <i class="fa fa-play fa-3x"></i>
-                    </div>
-                    <div class="image-description">3D printed trileaflet valve made from PEGDA subjected to pulmonary
-                        pressures and flows in an in vitro heart simulator.</div>
-                </div>
-                <img src="img/videos/Valve-thumbnail.png" class="img-responsive"
-                    style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 2">
-            </a>
-            <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
-                <source src="img/videos/Valve.mp4" type="video/mp4">
-
-            </video>
-        </div>
-
-        <div class="portfolio-flex-item portfolio-item">
-            <a href="#" class="portfolio-link">
-                <div class="caption">
-                    <div class="caption-content">
-                        <i class="fa fa-play fa-3x"></i>
-                    </div>
-                    <div class="image-description">Demonstration of high-throughput multinozzle embedded 3D printing
-                        using
-                        an 8x4 array printhead.</div>
-                </div>
-                <img src="img/videos/Tree-thumbnail.png" class="img-responsive"
-                    style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
-            </a>
-            <video controls style="width: 100%; max-width: 800px; height: auto; display: none;" class="video-player">
-                <source src="img/videos/Tree.mp4" type="video/mp4">
-
-            </video>
-        </div>
-
-        <div class="portfolio-flex-item portfolio-item">
-            <a href="#" class="portfolio-link">
-                <div class="caption">
-                    <div class="caption-content">
-                        <i class="fa fa-play fa-3x"></i>
-                    </div>
-                    <div class="image-description">3D printing of stem cell embryoid body bioink embedded into basement
-                        gel.
-                    </div>
-                </div>
-                <img src="img/videos/ambr-thumbnail.png" class="img-responsive"
-                    style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
-            </a>
-            <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
-                <source src="img/videos/ambr.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="portfolio-flex-item portfolio-item">
-            <a href="#" class="portfolio-link">
-                <div class="caption">
-                    <div class="caption-content">
-                        <i class="fa fa-play fa-3x"></i>
-                    </div>
-                    <div class="image-description">Multinozzle printing of enginered heart tissues (yellow) inside
-                        silicone
-                        support frames (blue).</div>
-                </div>
-                <img src="img/videos/BioMM3D-thumbnail.png" class="img-responsive"
-                    style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
-            </a>
-            <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
-                <source src="img/videos/BioMM3D.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="portfolio-flex-item portfolio-item">
-            <a href="#" class="portfolio-link">
-                <div class="caption">
-                    <div class="caption-content">
-                        <i class="fa fa-play fa-3x"></i>
-                    </div>
-                    <div class="image-description">Beating engineered heart tissue printed from single cardiomyocytes
-                        (central filament) and silicone (outer frame).</div>
-                </div>
-                <img src="img/videos/EHT.png" class="img-responsive"
-                    style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
-            </a>
-            <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
-                <source src="img/videos/EHT.mp4" type="video/mp4">
-            </video>
-        </div>
-
     </div>
-    </div>
+
 </section>
 
 
