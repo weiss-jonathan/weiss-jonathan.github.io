@@ -1,21 +1,33 @@
 <style>
   /* Ensure the dropdown is hidden by default */
   .dropdown-menu {
-    display: none; /* Hide the dropdown by default */
+    display: none;
+    /* Hide the dropdown by default */
   }
 
   /* Show the dropdown when hovering over the parent */
   .dropdown:hover .dropdown-menu {
-    display: block; /* Show the dropdown on hover */
+    display: block;
+    /* Show the dropdown on hover */
   }
 
   /* Optional: Position the dropdown correctly */
   .dropdown-menu {
-    position: absolute; /* Positioning context for the dropdown */
-    z-index: 1000; /* Ensure it appears above other content */
-    background-color: white; /* Background color */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for aesthetics */
+    position: absolute;
+    /* Positioning context for the dropdown */
+    z-index: 1000;
+    /* Ensure it appears above other content */
+    background-color: white;
+    /* Background color */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow for aesthetics */
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  
 </style>
 
 
@@ -30,35 +42,37 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#page-top">{{ site.title }}</a>
+      <a class="navbar-brand" href="{{ site.baseurl }}/#page-top">{{ site.title }}</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li class="hidden">
-          <a href="#page-top"></a>
-        </li>
-        
-        <li class="page-scroll">
+        <!-- <li class="hidden">
+          <a href="{{ site.baseurl }}/#page-top"></a>
+        </li> -->
+
+        <li> <!-- used to be <li class="nav-item">, but repalced smooth scrolling with native html smooth scrolling and javascript at bottom-->
           <a href="Resume.pdf" target="_blank">Resume</a>
-        </li>   
-        
-        <li class="page-scroll">
-          <a href="#about">About</a>
         </li>
-        
-        <li class="page-scroll">
-          <a href="#publications">Publications</a>
+
+        <li>
+          <a href="{{ site.baseurl }}/#about">About</a>
         </li>
-    
+
+        <li>
+          <a href="{{ site.baseurl }}/#publications">Publications</a>
+        </li>
+
         <!-- Dropdown for external portfolio pages -->
         <li class="dropdown page-scroll">
-          <a href="#portfolio" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Portfolio<span class="caret"></span></a>
+          <a href="{{ site.baseurl }}/#portfolio" class="dropdown-toggle" role="button" aria-haspopup="true"
+            aria-expanded="false">Portfolio<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a class="scroll-link" href="#portfolio">Gallery</a></li>
-            <li><a class="scroll-link" href="/Printess">Open-Source 3D Printer</a></li>
-            
+            <li><a class="scroll-link" href="{{ site.baseurl }}/#portfolio">Gallery</a></li>
+            <li><a class="scroll-link" href="https://weiss-jonathan.github.io/Printess" target="_blank">Open-Source 3D Printer</a></li>
+            <li><a class="scroll-link" href="/printheads" target="_blank">Printhead Design</a></li>
+
           </ul>
         </li>
 
@@ -77,3 +91,22 @@
   </div>
   <!-- /.container-fluid -->
 </nav>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // Smooth scrolling for internal links
+    $('a[href*="#"], a.navbar-brand').on('click', function (event) {
+      const target = $(this).attr('href');
+
+      // Check if the link is internal (same page)
+      if (target.startsWith("#") || target === "{{ site.baseurl }}/") {
+        event.preventDefault(); // Prevent default anchor behavior
+        $('html, body').animate({
+          scrollTop: $(target).offset().top
+        }, 500, 'linear');
+      }
+    });
+  });
+</script>
+

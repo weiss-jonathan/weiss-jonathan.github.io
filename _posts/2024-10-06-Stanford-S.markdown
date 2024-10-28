@@ -7,5 +7,5 @@ alt: image-alt
 project-date: October 2024
 client: Start Bootstrap
 category: 3D Printing
-description: Multimaterial gradient 3D printing of the Stanford "S" logo from white to yellow.
+description: Multimaterial gradient 3D printing of the Stanford "S" logo from white to yellow with Pluronic F-127 using a mixing nozzle.
 ---
