@@ -7,5 +7,5 @@ alt: image-alt
 project-date: April 2014
 client: Start Bootstrap
 category: Web Development
-description: A tree model printed with Carbopol in 3 minutes using the 32-multinozzle. See video below.
+description: An array of 32 tree models printed with Carbopol in 3 minutes using the 32-multinozzle. See video below.
 ---
