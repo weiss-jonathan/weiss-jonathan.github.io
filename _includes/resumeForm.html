@@ -1,0 +1,55 @@
+<div style="margin-top: 200px;">
+    <p style="text-align: center; margin: 50px;">Please fill out the form below to get in touch and request my CV/Resume.</p>
+</div>
+
+<form action="https://formspree.io/f/mjkvypla" method="POST">
+    <label>
+        Your email:
+        <input type="email" name="email" required>
+    </label>
+    <label>
+        Your message:
+        <textarea name="message" required style="height: 150px;"></textarea>
+    </label>
+
+    <button type="submit">Send</button>
+</form>
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    label {
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column; /* Ensures the label text and input are stacked */
+    }
+
+    input,
+    textarea {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        width: 100%; /* Makes the input and textarea take the full width of the container */
+        box-sizing: border-box; /* Ensures padding is included in the total width */
+    }
+
+    button {
+        background-color: #007BFF;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 40px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
