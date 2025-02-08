@@ -4,6 +4,10 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+ /* * {
+    outline: 1px solid red; /* outline everything in red to debug */
+  } */
+
 body {
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
@@ -122,12 +126,12 @@ header .intro-text .name {
     display: block;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 2em;
+    font-size: 3em;
     font-weight: 700;
 }
 
 header .intro-text .skills {
-    font-size: 1.25em;
+    font-size: 2em;
     font-weight: 300;
 }
 
@@ -138,11 +142,11 @@ header .intro-text .skills {
     }
 
     header .intro-text .name {
-        font-size: 4.75em;
+        font-size: 32px;
     }
 
     header .intro-text .skills {
-        font-size: 1.75em;
+        font-size: 16px;
     }
 
     p {
