@@ -24,8 +24,9 @@
             justify-content: center;
             align-items: center;
             /* Center the image vertically */
-            max-height: 400px;
+            max-height: 100%;
             /* Set maximum height for the container */
+            height: auto;
             width: 100%;
             overflow: hidden;
             /* Hide overflow to prevent stretching */
@@ -44,6 +45,7 @@
             width: 100%;
             align-self: flex-start;
             /* Ensure text aligns at the top */
+            margin-top: -50px;
         }
 
         .image-description {
@@ -65,7 +67,7 @@
         /* Added grid styles */
         .portfolio-flex-row {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             /* Fixed 3 columns */
             gap: 10px;
             /* Space between grid items */

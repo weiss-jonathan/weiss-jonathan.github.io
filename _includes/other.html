@@ -17,19 +17,17 @@
 
     <!-- Horizontal Scrolling Image Gallery -->
     <div class="image-gallery">
-      <img src="img/houseband2.jpg" alt="Fun Image 0">
-      <img src="img/stage.jpeg" alt="Fun Image 2">
-
-      <img src="img/ren.jpg" alt="Fun Image 3">
-
-      <img src="img/houseband.jpg" alt="Fun Image 4">
-      <img src="img/CJ.png" alt="Fun Image 6">
-      <img src="img/snatch.png" alt="Fun Image 5">
-      <img src="img/run.JPG" alt="Fun Image 4.5">
-      
+      <div class="image-container"><img src="img/houseband2.jpg" alt="Fun Image 0"></div>
+      <div class="image-container"><img src="img/stage.jpeg" alt="Fun Image 2"></div>
+      <div class="image-container"><img src="img/ren.jpg" alt="Fun Image 3"></div>
+      <div class="image-container"><img src="img/houseband.jpg" alt="Fun Image 4"></div>
+      <div class="image-container"><img src="img/CJ.png" alt="Fun Image 6"></div>
+      <div class="image-container"><img src="img/snatch.png" alt="Fun Image 5"></div>
+      <div class="image-container"><img src="img/run.JPG" alt="Fun Image 4.5"></div>
     </div>
   </div>
 </section>
+
 
 <style>
 .image-gallery {
@@ -39,11 +37,18 @@
     scroll-snap-type: x mandatory; /* For smooth snapping of images */
 }
 
-.image-gallery img {
-    max-height: 400px; /* Set a maximum height for the images */
+.image-container {
+    height: 400px;  /* Fixed height for all images */
+    width: auto;    /* Adjust width based on aspect ratio */
+    flex-shrink: 0; /* Prevent flexbox from shrinking */
     margin-right: 10px; /* Space between images */
-    scroll-snap-align: start; /* Aligns images for scrolling */
-    border-radius: 5px; /* Optional: rounded corners for images */
+    overflow: hidden;  /* Ensures images are contained within the div */
+}
+
+.image-container img {
+    height: 100%; /* Make the image take up the full height of the container */
+    width: auto;  /* Allow width to adjust based on aspect ratio */
+    object-fit: contain; /* Ensure image is not cropped and maintains its aspect ratio */
 }
 
 .image-gallery::-webkit-scrollbar {
