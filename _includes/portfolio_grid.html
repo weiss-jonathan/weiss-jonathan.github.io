@@ -75,6 +75,10 @@
             /* Add padding to the grid */
         }
 
+        .portfolio-flex-item:last-child {
+            grid-column: 2 / 3; /* Places the last video in the second column */
+        }
+
         .portfolio-flex-item:nth-child(1) .overlay,
         .portfolio-flex-item:nth-child(2) .overlay {
             display: none;
@@ -269,6 +273,22 @@
                 </video>
             </div>
 
+            <div class="portfolio-flex-item portfolio-item video-item">
+                <a href="#" class="portfolio-link">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-play fa-3x"></i>
+                        </div>
+                        <div class="image-description">Custom-made 8x4 stirplate array to accomodate custom 8x4 multinozzle printhead and well plate. All magnets are driven by a single stepper motor.</div>
+                    </div>
+                    <img src="img/videos/32wp.png" class="img-responsive"
+                        style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
+                </a>
+                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
+                    <source src="img/videos/32wp.mp4" type="video/mp4">
+                </video>
+            </div>
+
         </div>
     </div>
 
@@ -299,16 +319,16 @@
                 videoPlayer.style.display = 'block'; // Show the video player
                 videoPlayer.play(); // Play the video
 
-                // Request fullscreen when video starts playing
-                if (videoPlayer.requestFullscreen) {
-                    videoPlayer.requestFullscreen();
-                } else if (videoPlayer.mozRequestFullScreen) { // Firefox
-                    videoPlayer.mozRequestFullScreen();
-                } else if (videoPlayer.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                    videoPlayer.webkitRequestFullscreen();
-                } else if (videoPlayer.msRequestFullscreen) { // IE/Edge
-                    videoPlayer.msRequestFullscreen();
-                }
+                // // Request fullscreen when video starts playing
+                // if (videoPlayer.requestFullscreen) {
+                //     videoPlayer.requestFullscreen();
+                // } else if (videoPlayer.mozRequestFullScreen) { // Firefox
+                //     videoPlayer.mozRequestFullScreen();
+                // } else if (videoPlayer.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                //     videoPlayer.webkitRequestFullscreen();
+                // } else if (videoPlayer.msRequestFullscreen) { // IE/Edge
+                //     videoPlayer.msRequestFullscreen();
+                // }
             }
         });
     });
