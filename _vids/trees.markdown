@@ -9,5 +9,5 @@ project-date: April 2014
 client: Start Bootstrap
 category: Web Development
 thumbnail:
-description: Demonstration of high-throughput multinozzle embedded 3D printing using an 8x4 array printhead.
+description: Demonstration of high-throughput multinozzle embedded 3D printing using an 8x4 array printhead. This 3.5 minute print takes 2 hours when using a single nozzle.
 ---
