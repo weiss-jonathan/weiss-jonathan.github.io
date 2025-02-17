@@ -7,5 +7,5 @@ project-date: April 2014
 client: Start Bootstrap
 category: Web Development
 thumbnail: Auxetic-thumbnail.png
-description: Uniaxial tensile testing of auxetic structures. Red is stiff silicone, blue is soft silicone. Poisson ratio is affected by the ratio of stiffness between the horizontal and vertical struts.
+description: Uniaxial tensile testing of auxetic structures on a custom-built stepper motor strain device. Poisson ratio changes by the ratio of stiffness between the horizontal and vertical struts. Red is stiff silicone, blue is soft silicone.
 ---

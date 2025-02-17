@@ -25,7 +25,8 @@
             padding: 5px;
             margin-bottom: 20px;
             position: relative;
-            margin: 0 auto; /* This will center the element horizontally */
+            margin: 0 auto;
+            /* This will center the element horizontally */
         }
 
 
@@ -126,8 +127,10 @@
             max-height: 300px;
             object-fit: contain;
             /* Maintain aspect ratio and avoid stretching */
-
+            
         }
+
+
 
         .portfolio-flex-item-big .video-player {
             width: 100%;
@@ -137,7 +140,6 @@
             /* Maintain aspect ratio and avoid stretching */
 
         }
-
     </style>
 </head>
 
@@ -211,7 +213,11 @@
                         <img src="videos/{{ post.thumbnail }}" class="img-responsive" alt="{{ post.alt }}" data-video-id="{{ post.modal-id }}" style="cursor: pointer;"> -->
 
                             <!-- Overlay with Play Button -->
+                            {% if post.thumbnail %}
+                            <video controls poster="/videos/{{ post.thumbnail }}" class="video-player" id="video-{{ post.modal-id }}">
+                            {% else %}   
                             <video controls class="video-player" id="video-{{ post.modal-id }}">
+                            {% endif %}
                                 <source src="videos/{{ post.video }}" type="video/mp4">
 
                             </video>
