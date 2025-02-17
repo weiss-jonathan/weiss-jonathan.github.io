@@ -19,6 +19,21 @@
 
         }
 
+        .video-player {
+            display: none;
+            width: 100%;
+            /* Ensures it takes the same space as the thumbnail */
+            max-width: 600px;
+            /* Adjust this to match your thumbnail size */
+            margin: 0 auto;
+            /* Centers in block containers */
+            position: absolute;
+            /* Keeps it in place */
+            left: 50%;
+            transform: translateX(-50%);
+            /* Centers precisely */
+        }
+
         .image-container {
             display: flex;
             justify-content: center;
@@ -76,7 +91,8 @@
         }
 
         .portfolio-flex-item:last-child {
-            grid-column: 2 / 3; /* Places the last video in the second column */
+            grid-column: 2 / 3;
+            /* Places the last video in the second column */
         }
 
         .portfolio-flex-item:nth-child(1) .overlay,
@@ -87,14 +103,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+            background: rgba(0, 0, 0, 0.7);
+            /* Semi-transparent overlay */
             color: #fff;
             align-items: center;
             justify-content: center;
             font-size: 1.2em;
             text-align: center;
             padding: 20px;
-            z-index: 10; /* Ensure overlay is on top */
+            z-index: 10;
+            /* Ensure overlay is on top */
         }
 
         /* Show overlay on hover */
@@ -121,7 +139,7 @@
             <div class="portfolio-flex-item">
                 {% if post.link %}
                 <a href="{{ post.link }}" target="_blank">
-                {% endif %}
+                    {% endif %}
                     <div class="image-container">
                         <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
                         {% if post.link %}
@@ -130,7 +148,7 @@
                         </div>
                         {% endif %}
                     </div>
-                {% if post.link %}
+                    {% if post.link %}
                 </a>
                 {% endif %}
                 <div class="text-container">
@@ -223,7 +241,7 @@
                         </div>
                         <div class="image-description">
                             3D printing of stem cell embryoid body bioink embedded into
-                            basement gel. See publication:  
+                            basement gel. See publication:
 
                             Large-Scale Production of Wholly Cellular Bioinks.
 
@@ -279,7 +297,9 @@
                         <div class="caption-content">
                             <i class="fa fa-play fa-3x"></i>
                         </div>
-                        <div class="image-description">Custom-made 8x4 stirplate array to accomodate custom 8x4 multinozzle printhead and well plate. All magnets are driven by a single stepper motor.</div>
+                        <div class="image-description">Custom-made 8x4 stirplate array to accomodate custom 8x4
+                            multinozzle printhead and well plate. All magnets are driven by a single stepper motor.
+                        </div>
                     </div>
                     <img src="img/videos/32wp.png" class="img-responsive"
                         style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
@@ -297,38 +317,29 @@
 
 
 <script>
-    // Show the video player and request fullscreen when clicking the thumbnail
     document.querySelectorAll('.portfolio-item a').forEach(link => {
         link.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent default anchor behavior
-            const videoPlayer = this.nextElementSibling; // Get the corresponding video player
-            const thumbnail = this.querySelector('img'); // Get the thumbnail image
+            event.preventDefault();
+            const videoPlayer = this.nextElementSibling;
+            const thumbnail = this.querySelector('img');
 
-            // Hide all video players and thumbnails
             document.querySelectorAll('.video-player').forEach(player => {
                 player.style.display = 'none';
-                player.pause(); // Pause all videos
+                player.pause();
             });
             document.querySelectorAll('.portfolio-item img').forEach(img => {
-                img.style.display = 'block'; // Show all thumbnails
+                img.style.display = 'block';
             });
 
-            // Hide the thumbnail and show the clicked video player
             if (videoPlayer) {
-                thumbnail.style.display = 'none'; // Hide the thumbnail
-                videoPlayer.style.display = 'block'; // Show the video player
-                videoPlayer.play(); // Play the video
-
-                // // Request fullscreen when video starts playing
-                // if (videoPlayer.requestFullscreen) {
-                //     videoPlayer.requestFullscreen();
-                // } else if (videoPlayer.mozRequestFullScreen) { // Firefox
-                //     videoPlayer.mozRequestFullScreen();
-                // } else if (videoPlayer.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                //     videoPlayer.webkitRequestFullscreen();
-                // } else if (videoPlayer.msRequestFullscreen) { // IE/Edge
-                //     videoPlayer.msRequestFullscreen();
-                // }
+                videoPlayer.style.display = 'block';
+                videoPlayer.style.position = 'absolute';
+                videoPlayer.style.width = `${thumbnail.clientWidth}px`;
+                videoPlayer.style.height = `${thumbnail.clientHeight}px`;
+                videoPlayer.style.left = '50%';
+                videoPlayer.style.transform = 'translateX(-50%)';
+                videoPlayer.play();
+                thumbnail.style.display = 'none';
             }
         });
     });
