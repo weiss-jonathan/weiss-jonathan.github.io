@@ -77,3 +77,7 @@ defaults:
       type: "posts"
     values:
       permalink: ""
+
+collections:
+  vids:
+    output: true  # This ensures the videos are accessible from your site

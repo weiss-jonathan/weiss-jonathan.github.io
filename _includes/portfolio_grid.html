@@ -13,26 +13,21 @@
             position: relative;
         }
 
-        .video-item {
-
-            height: 250px;
-
+        .portfolio-flex-item-big {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* Keep items aligned at the start */
+            height: 350px;
+            width: 50%;
+            /* Ensure each item has enough height */
+            padding: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            margin: 0 auto; /* This will center the element horizontally */
         }
 
-        .video-player {
-            display: none;
-            width: 100%;
-            /* Ensures it takes the same space as the thumbnail */
-            max-width: 600px;
-            /* Adjust this to match your thumbnail size */
-            margin: 0 auto;
-            /* Centers in block containers */
-            position: absolute;
-            /* Keeps it in place */
-            left: 50%;
-            transform: translateX(-50%);
-            /* Centers precisely */
-        }
 
         .image-container {
             display: flex;
@@ -90,13 +85,8 @@
             /* Add padding to the grid */
         }
 
-        .portfolio-flex-item:last-child {
-            grid-column: 2 / 3;
-            /* Places the last video in the second column */
-        }
 
-        .portfolio-flex-item:nth-child(1) .overlay,
-        .portfolio-flex-item:nth-child(2) .overlay {
+        .overlay {
             display: none;
             position: absolute;
             top: 0;
@@ -113,13 +103,41 @@
             padding: 20px;
             z-index: 10;
             /* Ensure overlay is on top */
+            width: 100%;
+            /* Ensure the overlay spans the full width */
+            height: 100%;
+            /* Ensure the overlay spans the full height */
         }
 
-        /* Show overlay on hover */
-        .portfolio-flex-item:nth-child(1):hover .overlay,
-        .portfolio-flex-item:nth-child(2):hover .overlay {
+        .portfolio-flex-item:hover .image-container .overlay {
             display: flex;
+            /* Only show on hover of image */
         }
+
+        .portfolio-item.no-hover:hover .overlay {
+            display: none;
+        }
+
+
+        .portfolio-flex-item .video-player {
+            width: 100%;
+            /* Make the video take the full width of its container */
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            /* Maintain aspect ratio and avoid stretching */
+
+        }
+
+        .portfolio-flex-item-big .video-player {
+            width: 100%;
+            /* Make the video take the full width of its container */
+            height: auto;
+            object-fit: contain;
+            /* Maintain aspect ratio and avoid stretching */
+
+        }
+
     </style>
 </head>
 
@@ -163,184 +181,86 @@
 
 
     <!-- New Video Section -->
-
-    <div class="container">
-        <div class="row text-center" style="margin-top: 30px;">
-            <div class="col-lg-12 text-center">
-                <h2 style="color: #ffffff; margin-bottom: 40px;">Videos</h2>
-                <h5 style="color: #ffffff; margin-bottom: 40px;">Click to play</h5>
+    <section id="videos" style="background-color: #000">
+        <div class="container">
+            <div class="row text-center" style="margin-top: 30px;">
+                <div class="col-lg-12 text-center">
+                    <h2 style="color: #ffffff; margin-bottom: 40px;">Videos</h2>
+                    <h5 style="color: #ffffff; margin-bottom: 40px;">Click to play</h5>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="portfolio-flex-row">
-            <div class="portfolio-flex-item portfolio-item video-item">
-                <a href="#" class="portfolio-link">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-play fa-3x"></i>
+        <!-- Video Grid Section -->
+
+        <div class="container portfolio-flex-grid">
+            <div class="portfolio-flex-row">
+                {% assign sorted_vids = site.vids | sort: 'modal-id' %}
+                {% for post in sorted_vids %}
+
+                {% if post.big %}
+                <div class="portfolio-flex-item-big">
+                    {% else %}
+                    <div class="portfolio-flex-item">
+                        {% endif %}
+
+                        <div class="image-container">
+
+                            <!-- Thumbnail for video
+                       
+                        <img src="videos/{{ post.thumbnail }}" class="img-responsive" alt="{{ post.alt }}" data-video-id="{{ post.modal-id }}" style="cursor: pointer;"> -->
+
+                            <!-- Overlay with Play Button -->
+                            <video controls class="video-player" id="video-{{ post.modal-id }}">
+                                <source src="videos/{{ post.video }}" type="video/mp4">
+
+                            </video>
+
                         </div>
-                        <div class="image-description">Uniaxial tensile testing of auxetic structure. Red is stiff
-                            silicone,
-                            blue is soft silicone.</div>
-                    </div>
-                    <img src="img/videos/Auxetic-thumbnail.png" class="img-responsive"
-                        style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 1">
-                </a>
-                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
-                    <source src="img/videos/Auxetic.mp4" type="video/mp4">
 
-                </video>
-            </div>
-
-            <div class="portfolio-flex-item portfolio-item video-item">
-                <a href="#" class="portfolio-link">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-play fa-3x"></i>
-                        </div>
-                        <div class="image-description">3D printed trileaflet valve made from PEGDA subjected to
-                            pulmonary
-                            pressures and flows in an in vitro heart simulator.</div>
-                    </div>
-                    <img src="img/videos/Valve-thumbnail.png" class="img-responsive"
-                        style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 2">
-                </a>
-                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
-                    <source src="img/videos/Valve.mp4" type="video/mp4">
-
-                </video>
-            </div>
-
-            <div class="portfolio-flex-item portfolio-item video-item">
-                <a href="#" class="portfolio-link">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-play fa-3x"></i>
-                        </div>
-                        <div class="image-description">Demonstration of high-throughput multinozzle embedded 3D printing
-                            using
-                            an 8x4 array printhead.</div>
-                    </div>
-                    <img src="img/videos/Tree-thumbnail.png" class="img-responsive"
-                        style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
-                </a>
-                <video controls style="width: 100%; max-width: 800px; height: auto; display: none;"
-                    class="video-player">
-                    <source src="img/videos/Tree.mp4" type="video/mp4">
-
-                </video>
-            </div>
-
-            <div class="portfolio-flex-item portfolio-item video-item">
-                <a href="#" class="portfolio-link">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-play fa-3x"></i>
-                        </div>
-                        <div class="image-description">
-                            3D printing of stem cell embryoid body bioink embedded into
-                            basement gel. See publication:
-
-                            Large-Scale Production of Wholly Cellular Bioinks.
-
+                        <div class="text-container">
+                            <div class="image-description">{{ post.description }}</div>
                         </div>
                     </div>
-                    <img src="img/videos/ambr-thumbnail.png" class="img-responsive"
-                        style="width: 80%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
-                </a>
-                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
-                    <source src="img/videos/ambr.mp4" type="video/mp4">
-                </video>
+                    {% endfor %}
+                </div>
             </div>
 
-            <div class="portfolio-flex-item portfolio-item video-item">
-                <a href="#" class="portfolio-link">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-play fa-3x"></i>
-                        </div>
-                        <div class="image-description">Multinozzle printing of enginered heart tissues (yellow) inside
-                            silicone
-                            support frames (blue).</div>
-                    </div>
-                    <img src="img/videos/BioMM3D-thumbnail.png" class="img-responsive"
-                        style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
-                </a>
-                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
-                    <source src="img/videos/BioMM3D.mp4" type="video/mp4">
-                </video>
-            </div>
 
-            <div class="portfolio-flex-item portfolio-item video-item">
-                <a href="#" class="portfolio-link">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-play fa-3x"></i>
-                        </div>
-                        <div class="image-description">Beating engineered heart tissue printed from single
-                            cardiomyocytes
-                            (central filament) and silicone (outer frame).</div>
-                    </div>
-                    <img src="img/videos/EHT.png" class="img-responsive"
-                        style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
-                </a>
-                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
-                    <source src="img/videos/EHT.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="portfolio-flex-item portfolio-item video-item">
-                <a href="#" class="portfolio-link">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-play fa-3x"></i>
-                        </div>
-                        <div class="image-description">Custom-made 8x4 stirplate array to accomodate custom 8x4
-                            multinozzle printhead and well plate. All magnets are driven by a single stepper motor.
-                        </div>
-                    </div>
-                    <img src="img/videos/32wp.png" class="img-responsive"
-                        style="width: 100%; max-width: 400px; display: block; margin: 0 auto;" alt="Video 3">
-                </a>
-                <video controls style="width: 80%; max-width: 800px; height: auto; display: none;" class="video-player">
-                    <source src="img/videos/32wp.mp4" type="video/mp4">
-                </video>
-            </div>
-
-        </div>
-    </div>
+    </section>
 
 </section>
 
-
-
 <script>
-    document.querySelectorAll('.portfolio-item a').forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            const videoPlayer = this.nextElementSibling;
-            const thumbnail = this.querySelector('img');
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const thumbnails = document.querySelectorAll('.portfolio-flex-item img');
 
-            document.querySelectorAll('.video-player').forEach(player => {
-                player.style.display = 'none';
-                player.pause();
-            });
-            document.querySelectorAll('.portfolio-item img').forEach(img => {
-                img.style.display = 'block';
-            });
+        thumbnails.forEach(function(thumbnail) {
+            thumbnail.addEventListener('click', function () {
+                // Get the modal-id from the clicked thumbnail
+                const videoId = thumbnail.getAttribute('data-video-id');
+                const videoElement = document.getElementById('video-' + videoId);
+                const overlay = thumbnail.closest('.portfolio-flex-item').querySelector('.overlay');
 
-            if (videoPlayer) {
-                videoPlayer.style.display = 'block';
-                videoPlayer.style.position = 'absolute';
-                videoPlayer.style.width = `${thumbnail.clientWidth}px`;
-                videoPlayer.style.height = `${thumbnail.clientHeight}px`;
-                videoPlayer.style.left = '50%';
-                videoPlayer.style.transform = 'translateX(-50%)';
-                videoPlayer.play();
-                thumbnail.style.display = 'none';
-            }
-        });
+                // Hide the overlay and show the video
+                overlay.style.display = 'none';  // Hide the overlay
+                videoElement.style.display = 'block';  // Show the video player
+
+                // Play the video
+                videoElement.play();
+
+                // Optional: Pause other videos if you want only one video to play at a time
+                document.querySelectorAll('.portfolio-flex-item video').forEach(function (video) {
+                    if (video !== videoElement) {
+                        video.pause();
+                        video.style.display = 'none';
+                    }
+                });
+            });
     });
+});
+</script>
+
+
 </script>
